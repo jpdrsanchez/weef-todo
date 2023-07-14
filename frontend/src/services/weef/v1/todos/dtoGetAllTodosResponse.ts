@@ -1,5 +1,5 @@
-import { DtoTodo } from "./dtoTodo";
+import { DtoTodo } from './dtoTodo'
 
 export interface DtoGetAllTodosResponse {
-  todos: DtoTodo[];
+  todos: DtoTodo[]
 }

@@ -1,5 +1,5 @@
 export interface DtoUpdateTodoRequest {
-  id: number;
-  name?: string;
-  status?: string;
+  id: number
+  name?: string
+  status?: string
 }

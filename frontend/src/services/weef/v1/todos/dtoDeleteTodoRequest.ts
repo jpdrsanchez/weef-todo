@@ -1,3 +1,3 @@
 export interface DtoDeleteTodoInterface {
-  id: number;
+  id: number
 }

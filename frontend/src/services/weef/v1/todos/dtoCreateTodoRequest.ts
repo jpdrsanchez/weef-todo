@@ -1,3 +1,3 @@
 export interface DtoCreateTodoRequest {
-  name: string;
+  name: string
 }
