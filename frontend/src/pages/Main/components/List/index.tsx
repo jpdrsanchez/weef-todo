@@ -58,7 +58,6 @@ export const List = (props: ListProps) => {
         props.todos.map(todo => (
           <ListItem
             key={todo.id}
-            disablePadding
             secondaryAction={
               <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                 <IconButton
@@ -94,53 +93,50 @@ export const List = (props: ListProps) => {
               </Box>
             }
           >
-            <ListItemButton
-              onClick={async event => {
-                event.preventDefault()
-                await props.onClick({
-                  id: todo.id,
-                  status:
-                    todo.status === TodoStatus.DONE
-                      ? TodoStatus.UNDONE
-                      : TodoStatus.DONE
-                })
-                await props.onUpdate()
-              }}
-            >
-              <ListItemIcon>
-                <Box
-                  sx={{
-                    color: '#fff',
-                    width: 32,
-                    height: 32,
-                    borderRadius: 32,
-                    borderWidth: 1,
-                    borderColor:
-                      todo.status === TodoStatus.DONE ? '#74c69d' : '#222',
-                    borderStyle: 'solid',
-                    display: 'flex',
-                    fontSize: 24,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background:
-                      todo.status === TodoStatus.DONE ? '#74c69d' : 'none'
-                  }}
-                >
-                  {todo.status === TodoStatus.DONE ? <BsCheck2 /> : null}
-                </Box>
-              </ListItemIcon>
-              {update.isEditing === todo.id ? (
-                <OutlinedInput
-                  type="text"
-                  value={update.value}
-                  onChange={event => {
-                    update.setValue(event.target.value)
-                  }}
-                />
-              ) : (
-                <ListItemText primary={todo.title} />
-              )}
-            </ListItemButton>
+            <ListItemIcon>
+              <IconButton
+                onClick={async event => {
+                  event.preventDefault()
+                  await props.onClick({
+                    id: todo.id,
+                    status:
+                      todo.status === TodoStatus.DONE
+                        ? TodoStatus.UNDONE
+                        : TodoStatus.DONE
+                  })
+                  await props.onUpdate()
+                }}
+                sx={{
+                  color: '#fff',
+                  width: 32,
+                  height: 32,
+                  borderRadius: 32,
+                  borderWidth: 1,
+                  borderColor:
+                    todo.status === TodoStatus.DONE ? '#74c69d' : '#222',
+                  borderStyle: 'solid',
+                  display: 'flex',
+                  fontSize: 24,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background:
+                    todo.status === TodoStatus.DONE ? '#74c69d' : 'none'
+                }}
+              >
+                {todo.status === TodoStatus.DONE ? <BsCheck2 /> : null}
+              </IconButton>
+            </ListItemIcon>
+            {update.isEditing === todo.id ? (
+              <OutlinedInput
+                type="text"
+                value={update.value}
+                onChange={event => {
+                  update.setValue(event.target.value)
+                }}
+              />
+            ) : (
+              <ListItemText primary={todo.title} />
+            )}
           </ListItem>
         ))}
     </MUIList>
