@@ -202,7 +202,7 @@ final class Todos {
 			'name' => $todo->post_name,
 			'title' => $todo->post_title,
 			'status' => get_post_meta($todo->ID, '_status', true)
-		], 201);
+		], 200);
 	}
 
 	/**
